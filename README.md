@@ -1,15 +1,19 @@
 # wls-rust
 
-weighted linear regression in pure Rust w/o any 3d party dependencies or frameworks.
+Weighted linear regression in pure Rust w/o any 3d party dependencies or frameworks. 
+
+Forked to expose as a library crate - the hard work was done by vspaz here: https://github.com/vspaz/wls-rs
 
 ### How-to
 
-```rust
-mod models;
-mod asserts;
+Use in your project by adding this line to your `Cargo.toml`:
 
-use crate::models::wls::Wls;
-use crate::asserts::asserts::assert_almost_equal;
+```toml
+wls = {git = "https://github.com/fred314159265/wls-rs.git"}
+```
+
+```rust
+use wls::models::wls::Wls;
 
 fn main() {
     let x_points = vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0];
@@ -19,8 +23,8 @@ fn main() {
     let wls = Wls::new(x_points, y_points, Some(weights));
     let point = wls.fit_linear_regression().unwrap();
 
-    assert_almost_equal(1.410964913,point.get_intercept(), 1.0e-6);
-    assert_almost_equal(0.321271930, point.get_slope(), 1.0e-6);
+    println!("Slope: {:?}", point.get_slope());
+    println!("Intercept: {:?}", point.get_intercept());
 }
 ```
 
