@@ -1,6 +1,7 @@
 use crate::asserts::assert::{assert_have_same_size, assert_have_size_greater_than_two};
 use crate::models::point::Point;
 
+/// Weighted least squares linear regression fit calculator.
 pub struct Wls {
     x_points: Vec<f64>,
     y_points: Vec<f64>,
@@ -12,6 +13,7 @@ fn populate_weights(capacity: &Vec<f64>, value: f64) -> Vec<f64> {
 }
 
 impl Wls {
+    /// Create a new instance of the weighted least square linear regression calculator.
     pub fn new(x_points: Vec<f64>, y_points: Vec<f64>, weights: Option<Vec<f64>>) -> Self {
         let mut weights_normalized: Vec<f64> = vec![];
 
@@ -32,6 +34,7 @@ impl Wls {
         }
     }
 
+    /// Perform the linear regression and return the fit, if calculable.
     pub fn fit_linear_regression(&self) -> Option<Point> {
         let mut sum_of_weights: f64 = 0.0;
         let mut sum_of_products_of_weights_and_x_squared: f64 = 0.0;
