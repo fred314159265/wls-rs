@@ -1,5 +1,7 @@
+use num_traits::float::FloatCore;
+
 #[cfg(test)]
-pub fn assert_almost_equal(expected: f64, actual: f64, delta: f64) {
+pub fn assert_almost_equal<T: FloatCore>(expected: T, actual: T, delta: T) {
     assert!(delta > expected - actual);
 }
 
@@ -8,10 +10,10 @@ pub fn assert_true(condition: bool) {
     assert!(condition)
 }
 
-pub fn assert_have_same_size(items_1: &Vec<f64>, items_2: &Vec<f64>) {
+pub fn assert_have_same_size<T: FloatCore>(items_1: &[T], items_2: &[T]) {
     assert_eq!(items_1.len(), items_2.len())
 }
 
-pub fn assert_have_size_greater_than_two(items: &Vec<f64>) {
+pub fn assert_have_size_greater_than_two<T: FloatCore>(items: &[T]) {
     assert!(items.len() >= 2)
 }

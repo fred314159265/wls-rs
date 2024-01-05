@@ -1,8 +1,8 @@
 # wls-rust
 
-Weighted linear regression in pure Rust w/o any 3d party dependencies or frameworks. 
+Weighted linear regression in pure Rust with only a single any 3rd party dependency (num-traits).
 
-Forked to expose as a library crate - the hard work was done by vspaz here: https://github.com/vspaz/wls-rs
+Forked to expose as a library crate & enable generic float support - the hard work was done by vspaz here: https://github.com/vspaz/wls-rs
 
 ### How-to
 
@@ -33,7 +33,7 @@ fn main() {
 WLS is based on the OLS method and help solve problems of model inadequacy or violations of the basic regression
 assumptions.
 
-Estimating a linear regression with WLS is useful, but can appear to be daunting w/o special stats packages, such as
+Estimating a linear regression with WLS is useful, but can appear to be daunting without special stats packages, such as
 Python statsmodels or Pandas.
 
 ## References
